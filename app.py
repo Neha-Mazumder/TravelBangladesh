@@ -23,7 +23,8 @@ def get_db():
 def init_db():
     """Create tables, seed once, and remove duplicate destination rows."""
     conn = get_db()
-    with open("schema.sql", "r") as f:
+    schema_path = os.path.join(app.root_path, "schema.sql")
+    with open(schema_path, "r") as f:
         schema_sql = f.read()
 
     seed_marker = "-- Seed the destinations table with our places"
@@ -940,6 +941,9 @@ def api_featured():
     return jsonify(results)
 
 
+# Initialize database on module import so WSGI servers (e.g. Gunicorn) also run setup.
+init_db()
+
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True, port=5000)
