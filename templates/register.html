@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Register - TravelBangladesh{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Create Account</h1>
+    <p>Join us and start exploring</p>
+</div>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Sign Up</h2>
+        <form action="/register" method="post">
+            <input type="text" name="name" placeholder="Full Name" required minlength="2">
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Password (min 6 characters)" required minlength="6">
+            <input type="password" name="confirmation" placeholder="Confirm Password" required minlength="6">
+            <p class="auth-hint">Create a strong password with at least 6 characters. Make sure both password fields match.</p>
+            <button type="submit" class="modal-btn">Sign Up</button>
+        </form>
+        <p class="modal-footer">Already have an account? <a href="/login">Login</a></p>
+    </div>
+</div>
+{% endblock %}

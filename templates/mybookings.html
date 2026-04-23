@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block title %}My Bookings - TravelBangladesh{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>My Bookings</h1>
+    <p>View and manage your travel bookings</p>
+</div>
+
+<div class="bookings-container">
+    <!-- guide bookings -->
+    <h2 class="section-title">Guide Bookings</h2>
+    {% if guide_bookings %}
+    <div class="bookings-grid">
+        {% for booking in guide_bookings %}
+        <div class="booking-card {% if booking.status == 'cancelled' %}booking-cancelled{% endif %}">
+            <div class="booking-header">
+                <h3>Guide Booking #{{ booking.id }}</h3>
+                <span class="booking-status status-{{ booking.status }}">{{ booking.status | upper }}</span>
+            </div>
+            <div class="booking-details">
+                <p><strong>Name:</strong> {{ booking.name }}</p>
+                <p><strong>Phone:</strong> {{ booking.phone }}</p>
+                <p><strong>Date:</strong> {{ booking.booking_date }}</p>
+                <p><strong>Persons:</strong> {{ booking.persons }}</p>
+                {% if booking.duration %}
+                <p><strong>Duration:</strong> {{ booking.duration }} day(s)</p>
+                {% endif %}
+                {% if booking.message %}
+                <p><strong>Note:</strong> {{ booking.message }}</p>
+                {% endif %}
+                <p class="booking-created">Booked on: {{ booking.created_at }}</p>
+            </div>
+            {% if booking.status == 'confirmed' %}
+            <form action="/cancel-booking" method="post" class="cancel-form">
+                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                <input type="hidden" name="booking_type" value="guide">
+                <button type="submit" class="cancel-btn" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</button>
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-bookings">No guide bookings yet. <a href="/">Book a guide</a> to get started!</p>
+    {% endif %}
+
+    <br><br>
+
+    <!-- place bookings -->
+    <h2 class="section-title">Place Bookings</h2>
+    {% if place_bookings %}
+    <div class="bookings-grid">
+        {% for booking in place_bookings %}
+        <div class="booking-card {% if booking.status == 'cancelled' %}booking-cancelled{% endif %}">
+            <div class="booking-header">
+                <h3>{{ booking.place_name }}</h3>
+                <span class="booking-status status-{{ booking.status }}">{{ booking.status | upper }}</span>
+            </div>
+            <div class="booking-details">
+                <p><strong>Name:</strong> {{ booking.name }}</p>
+                <p><strong>Phone:</strong> {{ booking.phone }}</p>
+                <p><strong>Date:</strong> {{ booking.booking_date }}</p>
+                <p><strong>Persons:</strong> {{ booking.persons }}</p>
+                {% if booking.price %}
+                <p><strong>Price:</strong> {{ booking.price }} BDT</p>
+                {% endif %}
+                <p class="booking-created">Booked on: {{ booking.created_at }}</p>
+            </div>
+            {% if booking.status == 'confirmed' %}
+            <form action="/cancel-booking" method="post" class="cancel-form">
+                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                <input type="hidden" name="booking_type" value="place">
+                <button type="submit" class="cancel-btn" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</button>
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-bookings">No place bookings yet. <a href="/destinations">Explore destinations</a> to book your first trip!</p>
+    {% endif %}
+</div>
+{% endblock %}

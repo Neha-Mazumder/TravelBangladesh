@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TravelBangladesh{% endblock %}</title>
+    <meta name="description" content="Explore the beauty of Bangladesh - Book tours, guides, and discover amazing destinations across Dhaka, Chittagong, Sylhet and more.">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    {% block navbar %}
+    <div class="{% block nav_class %}sub-container{% endblock %}">
+        <nav>
+            <a href="/" class="logo-link"><img src="{{ url_for('serve_logo', filename='travelbd.png') }}" alt="TravelBangladesh Logo" class="logo-img"></a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/destinations">Destinations</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/bookticket">Book Ticket</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if session.user_id %}
+                <li><a href="/mybookings">My Bookings</a></li>
+                {% elif session.admin_id %}
+                <li><a href="/admin/dashboard">Admin Dashboard</a></li>
+                {% endif %}
+            </ul>
+            {% if session.admin_id %}
+                <a href="/admin/dashboard" class="login-link"><button class="login"><b>Admin</b></button></a>
+                <a href="/admin/logout"><button class="signup"><b>Logout</b></button></a>
+            {% elif session.user_id %}
+                <a href="/profile" class="login-link"><button class="login"><b>{{ session.user_name.split(' ')[0] }}</b></button></a>
+                <a href="/logout"><button class="signup"><b>Logout</b></button></a>
+            {% else %}
+                <a href="/login"><button class="login"><b>Login</b></button></a>
+                <a href="/register"><button class="signup"><b>Sign Up</b></button></a>
+            {% endif %}
+        </nav>
+    </div>
+    {% endblock %}
+
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-container">
+        {% for category, message in messages %}
+        <div class="flash-message flash-{{ category }}">
+            <span>{{ message }}</span>
+            <button class="flash-close" onclick="this.parentElement.remove()">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+    <!-- district places modal -->
+    <div id="districtPlacesModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close-btn" onclick="closeModal('districtPlacesModal')">&times;</span>
+            <h2 id="districtModalTitle">District Places</h2>
+            <div id="placesContainer" class="places-grid"></div>
+        </div>
+    </div>
+
+    <!-- book place modal -->
+    <div id="bookPlaceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('bookPlaceModal')">&times;</span>
+            <h2>Book Your Visit</h2>
+            <h3 id="bookPlaceName" style="color: var(--gold-crayola);"></h3>
+            <p>Entry Fee: <span id="bookPlacePrice"></span> BDT</p>
+            <form id="placeBookingForm">
+                <input type="text" id="placeBookingName" placeholder="Your Name" required>
+                <input type="tel" id="placeBookingPhone" placeholder="Phone Number (11 digits)" required pattern="[0-9]{11}">
+                <input type="date" id="placeBookingDate" required>
+                <input type="number" id="placeBookingPersons" placeholder="Number of Persons" min="1" required>
+                <button type="submit" class="modal-btn">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- review modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('reviewModal')">&times;</span>
+            <h2>Write a Review</h2>
+            <h3 id="reviewPlaceName" style="color: var(--gold-crayola);"></h3>
+            <form id="reviewForm">
+                <input type="hidden" id="reviewDestId">
+                <div class="star-rating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" id="reviewRating" value="0">
+                <textarea id="reviewComment" placeholder="Share your experience..." rows="4" style="width:100%;padding:15px;margin:10px 0;background-color:#111;border:2px solid var(--gold-crayola);border-radius:8px;color:white;font-size:16px;box-sizing:border-box;resize:vertical;font-family:Arial,sans-serif;"></textarea>
+                <button type="submit" class="modal-btn">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="info">
+        <div class="acme">
+            <br><br><br><br><br>
+            <img src="{{ url_for('serve_logo', filename='travelbd.png') }}" alt="TravelBangladesh" class="footer-logo">
+            <br>TravelBangladesh Ltd.<br>
+            Providing amazing travel experiences since 2020<br>
+            <div class="social-links footer-social-links">
+                <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i> X</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="tag">SERVICES</h4>
+            <a href="/tour-planning" class="footer-link"><i class="fa-solid fa-route"></i> Tour Planning</a>
+            <a href="/guide-services" class="footer-link"><i class="fa-solid fa-user-tie"></i> Guide Services</a>
+            <a href="/hotel-booking" class="footer-link"><i class="fa-solid fa-hotel"></i> Hotel Booking</a>
+            <a href="/transportation" class="footer-link"><i class="fa-solid fa-bus"></i> Transportation</a>
+        </div>
+        <div class="footer-column">
+            <h4 class="tag">COMPANY</h4>
+            <a href="/about" class="footer-link">About us</a>
+            <a href="/contact" class="footer-link">Contact</a>
+            <a href="/careers" class="footer-link">Careers</a>
+            <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+            <a href="/terms" class="footer-link">Terms & Conditions</a>
+            <a href="/login" class="footer-link" style="color: var(--gold-crayola); margin-top: 8px;"><i class="fa-solid fa-lock"></i> Admin</a>
+        </div>
+        <div class="footer-column">
+            <h4 class="tag">CONTACT</h4>
+            <span class="footer-text"><i class="fa-solid fa-phone"></i> Phone: 01300318906</span>
+            <span class="footer-text"><i class="fa-solid fa-envelope"></i> Email: info@travelbd.com</span>
+            <span class="footer-text"><i class="fa-solid fa-location-dot"></i> Address: Sector 14, Uttara</span>
+            <span class="footer-text">Dhaka, Bangladesh</span>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <p>&copy; 2024 TravelBangladesh. All rights reserved.</p>
+    </div>
+
+    <script>
+        const IS_LOGGED_IN = {% if session.user_id %}true{% else %}false{% endif %};
+        const USER_NAME = "{{ session.user_name | default('', true) }}";
+    </script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

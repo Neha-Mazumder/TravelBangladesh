@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block title %}Destinations - TravelBangladesh{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Explore Bangladesh</h1>
+    <p>Discover the beauty of different districts</p>
+</div>
+
+<div class="destinations-section">
+    <!-- search and filter bar -->
+    <div class="search-filter-container">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search destinations by name or district..." autocomplete="off">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+        <div class="filter-controls">
+            <select id="priceFilter" class="filter-select">
+                <option value="">All Prices</option>
+                <option value="0-500">Under 500 BDT</option>
+                <option value="500-1000">500 - 1000 BDT</option>
+                <option value="1000+">1000+ BDT</option>
+            </select>
+            <select id="sortBy" class="filter-select">
+                <option value="">Sort By</option>
+                <option value="name">Name (A-Z)</option>
+                <option value="price-low">Price (Low to High)</option>
+                <option value="price-high">Price (High to Low)</option>
+            </select>
+        </div>
+    </div>
+
+    <h2 class="section-title">Popular Districts</h2>
+    <div class="menu">
+        <div class="img">
+            <img src="/static/image/dhaka-city-bangladesh-urban-landscape.jpg" height="155vh" width="300px">
+            <h2 class="mtext">Dhaka</h2>
+            <p class="dest-description">Capital city with rich history and modern attractions</p>
+            <button class="butn" onclick="showDistrictPlaces('Dhaka')"><b>Explore Places</b></button>
+        </div>
+        <div class="img">
+            <img src="/static/image/chittagong-port-city-bangladesh.jpg" height="155vh" width="300px">
+            <h2 class="mtext">Chittagong</h2>
+            <p class="dest-description">Queen of Hills with breathtaking views</p>
+            <button class="butn" onclick="showDistrictPlaces('Chittagong')"><b>Explore Places</b></button>
+        </div>
+        <div class="img">
+            <img src="/static/image/sylhet-bangladesh-tea-gardens-green-hills.jpg" height="155vh" width="300px">
+            <h2 class="mtext">Sylhet</h2>
+            <p class="dest-description">Land of tea gardens and spiritual sites</p>
+            <button class="butn" onclick="showDistrictPlaces('Sylhet')"><b>Explore Places</b></button>
+        </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 100px;">More Destinations</h2>
+    <div class="menu">
+        <div class="img">
+            <img src="/static/image/cox-bazar-longest-sea-beach-bangladesh.jpg" height="155vh" width="300px">
+            <h2 class="mtext">Cox's Bazar</h2>
+            <p class="dest-description">World's longest natural sea beach</p>
+            <div class="destination-actions">
+                <button class="butn" onclick="showDistrictPlaces(&quot;Cox's Bazar&quot;)"><b>Visit</b></button>
+                <button class="butn book-action" onclick="bookPlace('Cox\'s Bazar Beach Getaway', 5000)"><b>Book</b></button>
+            </div>
+        </div>
+        <div class="img">
+            <img src="/static/image/traditional-baots-houseboat-tanguar-haor-sunamganj-famous-tourist-spot-bangladesh-was-raining-288058439.webp" height="155vh" width="300px">
+            <h2 class="mtext">Tanguar Haor</h2>
+            <p class="dest-description">Largest wetland and bird sanctuary</p>
+            <div class="destination-actions">
+                <button class="butn" onclick="showDistrictPlaces('Sunamganj')"><b>Visit</b></button>
+                <button class="butn book-action" onclick="bookPlace('Tanguar Haor Houseboat Experience', 6000)"><b>Book</b></button>
+            </div>
+        </div>
+        <div class="img">
+            <img src="/static/image/sundarbans-mangrove-forest-bangladesh.jpg" height="155vh" width="300px">
+            <h2 class="mtext">Sundarbans</h2>
+            <p class="dest-description">Home of Royal Bengal Tigers</p>
+            <div class="destination-actions">
+                <button class="butn" onclick="showDistrictPlaces('Khulna')"><b>Visit</b></button>
+                <button class="butn book-action" onclick="bookPlace('Sundarbans Adventure', 8000)"><b>Book</b></button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

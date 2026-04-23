@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Contact Message - Admin{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Contact Message</h1>
+    <p>Read the full note from a visitor</p>
+</div>
+
+<div style="max-width: 900px; margin: 40px auto; padding: 30px; background: #1a1a1a; border: 1px solid var(--gold-crayola); border-radius: 10px;">
+    <p style="margin: 0 0 15px 0; color: #999;"><a href="/admin/dashboard" style="color: var(--gold-crayola); text-decoration: none;"><i class="fa-solid fa-arrow-left"></i> Back to dashboard</a></p>
+
+    <h2 style="color: var(--gold-crayola); margin-top: 0;">{{ contact.subject or 'No Subject' }}</h2>
+
+    <p style="color: white; margin: 10px 0;"><strong>Name:</strong> {{ contact.name }}</p>
+    <p style="color: white; margin: 10px 0;"><strong>Email:</strong> {{ contact.email }}</p>
+    <p style="color: white; margin: 10px 0;"><strong>Phone:</strong> {{ contact.phone or 'N/A' }}</p>
+    <p style="color: white; margin: 10px 0;"><strong>Date:</strong> {{ contact.created_at }}</p>
+
+    <div style="margin-top: 25px; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
+        <p style="color: #ccc; line-height: 1.8; white-space: pre-wrap; margin: 0;">{{ contact.message }}</p>
+    </div>
+
+    <div style="margin-top: 25px;">
+        <form method="POST" action="/admin/delete-contact/{{ contact.id }}" style="display: inline;">
+            <button type="submit" style="background: #c00; color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer; font-size: 14px;" onclick="return confirm('Delete this contact?');">
+                <i class="fa-solid fa-trash"></i> Delete Message
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

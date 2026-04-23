@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block title %}My Profile - TravelBangladesh{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>My Profile</h1>
+    <p>Manage your account</p>
+</div>
+
+<div class="profile-container">
+    <!-- stats cards -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">{{ stats.guide_bookings }}</div>
+            <div class="stat-label">Guide Bookings</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats.place_bookings }}</div>
+            <div class="stat-label">Place Bookings</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats.favorites }}</div>
+            <div class="stat-label">Favorites</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats.reviews }}</div>
+            <div class="stat-label">Reviews</div>
+        </div>
+    </div>
+
+    <div class="profile-sections">
+        <!-- update name -->
+        <div class="profile-card">
+            <h3>Update Name</h3>
+            <form action="/profile" method="post">
+                <input type="hidden" name="action" value="update_name">
+                <input type="text" name="name" value="{{ user.name }}" placeholder="Your Name" required minlength="2">
+                <button type="submit" class="modal-btn">Update Name</button>
+            </form>
+        </div>
+
+        <!-- change password -->
+        <div class="profile-card">
+            <h3>Change Password</h3>
+            <form action="/profile" method="post">
+                <input type="hidden" name="action" value="change_password">
+                <input type="password" name="current_password" placeholder="Current Password" required>
+                <input type="password" name="new_password" placeholder="New Password (min 6 chars)" required minlength="6">
+                <input type="password" name="confirm_password" placeholder="Confirm New Password" required minlength="6">
+                <button type="submit" class="modal-btn">Change Password</button>
+            </form>
+        </div>
+
+        <!-- account info -->
+        <div class="profile-card">
+            <h3>Account Info</h3>
+            <div class="info-row">
+                <span class="info-label">Email:</span>
+                <span class="info-value">{{ user.email }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Member Since:</span>
+                <span class="info-value">{{ user.created_at }}</span>
+            </div>
+            <br>
+            <div class="profile-links">
+                <a href="/mybookings" class="profile-link-btn">View My Bookings</a>
+                <a href="/favorites" class="profile-link-btn">View Favorites</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

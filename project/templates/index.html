@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+{% block title %}TravelBangladesh - Explore the Beauty{% endblock %}
+{% block nav_class %}container{% endblock %}
+
+{% block content %}
+<!-- ==================== HERO SECTION ==================== -->
+<div class="w"><b>Explore and Experience</b></div>
+<div class="t"><b>Discover the Beauty of Bangladesh</b></div>
+<div class="e"><b>From Sundarbans to Cox's Bazar <br> Experience Nature, Culture & Adventure</b></div>
+<button id="ne" class="hero-cta">Book a Guide Today</button>
+
+<br><br><br><br>
+
+<!-- ==================== STATS SECTION ==================== -->
+<div class="stats-home-section">
+    <h2 class="l"><b>Why Choose TravelBangladesh?</b></h2>
+    <div class="stats-grid-home">
+        <div class="stat-item-home">
+            <div class="stat-icon"><i class="fa-solid fa-earth-asia"></i></div>
+            <div class="stat-number-home">50+</div>
+            <div class="stat-text">Destinations Covered</div>
+        </div>
+        <div class="stat-item-home">
+            <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-number-home">10K+</div>
+            <div class="stat-text">Happy Travelers</div>
+        </div>
+        <div class="stat-item-home">
+            <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+            <div class="stat-number-home">4.9/5</div>
+            <div class="stat-text">Average Rating</div>
+        </div>
+        <div class="stat-item-home">
+            <div class="stat-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="stat-number-home">100+</div>
+            <div class="stat-text">Expert Guides</div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+<div class="parent">
+    <h2 class="l"><b>Experience Bangladesh in its purest form</b></h2>
+    <h1 id="s">Embark on a journey through timeless beauty</h1>
+    <p id="l"><b>"Discover a land where culture breathes, nature glows
+    <br>and every journey awakens the explorer within you.<br>
+        Step into the heart of Bangladesh."</b></p>
+    <br><br><br><br><br><br><br><br>
+</div>
+
+<div class="menu">
+    <div class="img">
+        <img src="/static/image/dhaka-city-bangladesh-urban-landscape.jpg" height="155vh" width="300px">
+        <h2 class="mtext">Dhaka</h2>
+        <button class="butn" onclick="showDistrictPlaces('Dhaka')"><b>Explore Places</b></button>
+    </div>
+    <div class="img">
+        <img src="/static/image/chittagong-port-city-bangladesh.jpg" height="155vh" width="300px">
+        <h2 class="mtext">Chittagong</h2>
+        <button class="butn" onclick="showDistrictPlaces('Chittagong')"><b>Explore Places</b></button>
+    </div>
+    <div class="img">
+        <img src="/static/image/sylhet-bangladesh-tea-gardens-green-hills.jpg" height="155vh" width="300px">
+        <h2 class="mtext">Sylhet</h2>
+        <button class="butn" onclick="showDistrictPlaces('Sylhet')"><b>Explore Places</b></button>
+    </div>
+</div>
+
+<br><br><br><br>
+
+<!-- ==================== FEATURED DESTINATIONS ==================== -->
+<div class="featured-section">
+    <h2 class="section-title-home"><i class="fa-solid fa-location-dot section-icon"></i> Featured Destinations</h2>
+    <p class="featured-subtitle">Top-rated places loved by our travelers</p>
+    <div class="featured-grid">
+        <div class="featured-card">
+            <div class="featured-badge"><i class="fa-solid fa-star"></i> 4.9</div>
+            <img src="/static/image/lalbagh-fort-dhaka-historical-monument.jpg" alt="Lalbagh Fort">
+            <h3>Lalbagh Fort</h3>
+            <p>Historic Mughal fort from 17th century</p>
+            <span class="featured-price">500 BDT</span>
+            <button class="featured-btn" onclick="showDistrictPlaces('Dhaka')">View More</button>
+        </div>
+        <div class="featured-card">
+            <div class="featured-badge"><i class="fa-solid fa-star"></i> 4.8</div>
+            <img src="/static/image/foys-lake-chittagong-amusement-park.jpg" alt="Foys Lake">
+            <h3>Foys Lake</h3>
+            <p>Scenic lake with amusement park</p>
+            <span class="featured-price">200 BDT</span>
+            <button class="featured-btn" onclick="showDistrictPlaces('Chittagong')">View More</button>
+        </div>
+        <div class="featured-card">
+            <div class="featured-badge"><i class="fa-solid fa-star"></i> 5.0</div>
+            <img src="/static/image/srimangal-tea-garden-bangladesh.jpg" alt="Sreemangal">
+            <h3>Sreemangal</h3>
+            <p>Tea capital with lush green hills</p>
+            <span class="featured-price">600 BDT</span>
+            <button class="featured-btn" onclick="showDistrictPlaces('Sylhet')">View More</button>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br>
+
+<div class="story">
+    <div><img src="" height="400vh"></div>
+    <div class="St">
+        <h3 class="so">Bangladesh</h3>
+        <h1 class="fo"> A country <br>of natural beauty</h1>
+        <br><br>
+        <p>The beauty of Bangladesh is a rich tapestry of natural landscapes and cultural heritage,
+        including the world's longest natural sea beach at Cox's Bazar,
+        the massive mangrove forest of the Sundarbans, and vast, verdant river plains.
+        The country also boasts scenic hills in the northeast and southeast,
+        numerous archaeological sites, and lush tea gardens,
+        complemented by a vibrant culture and serene rural environment.</p><br><br>
+        <h3>Book Guide Through Call</h3>
+        <h1 class="so">01300318906</h1>
+    </div>
+    <div id="i"><img src="/static/image/nilgiri-2020-06-07-5edc99c426aa6.jpeg" height="500vh"></div>
+</div>
+
+<br><br><br><br><br><br><br>
+
+<div class="dish">
+    <img src="/static/image/20d35a0ed3ce4857bbe3e25481eaab7e-279440114-294016256252968-1092004695835315850-n.jpeg" height="900vh" width="650px">
+    <div class="ds">
+        <img src="">
+        <h3 id="sc">Tanguar Haor</h3>
+        <h1 id="lob"> Largest <br>Wetland</h1>
+        <p id="pera">Tanguar Haor is one of the largest <br>natural water reservoirs in South Asia<br>
+            Because of its diverse natural <br> and aquatic features, it has been declared<br>as a Ramsar site by IUCN.<br>
+            Every winter the haor is home <br>to about 200 types of migratory birds.<br>
+            It has become more popular as a <br>tourist attraction <br>
+           due to the number of houseboats<br> Experience houseboat life with us<br></p>
+        <h4 id="price">houseboat Ticket price</h4>
+        <h3 id="new">6,000/-</h3>
+        <button id="seemanu"><b>Book Now</b></button>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+
+<!-- ==================== TESTIMONIALS SECTION ==================== -->
+<div class="testimonials-section">
+    <h2 class="section-title-home"><i class="fa-solid fa-comments section-icon"></i> What Our Travelers Say</h2>
+    <p class="featured-subtitle">Real experiences from our happy customers</p>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="star-display"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="testimonial-text">"Amazing experience! The guides were knowledgeable and the destinations were breathtaking. TravelBangladesh truly exceeded our expectations!"</p>
+            <div class="testimonial-author">
+                <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                <div>
+                    <strong>Rahman Khan</strong>
+                    <p>Dhaka</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="star-display"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="testimonial-text">"Best trip ever! Professional service, beautiful locations, and the houseboat experience at Tanguar Haor was unforgettable. Highly recommended!"</p>
+            <div class="testimonial-author">
+                <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                <div>
+                    <strong>Fatima Akhter</strong>
+                    <p>Chittagong</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="star-display"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="testimonial-text">"Exceptional service and attention to detail. Every moment was perfectly planned. I can't wait to book another trip with TravelBangladesh!"</p>
+            <div class="testimonial-author">
+                <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                <div>
+                    <strong>Arif Hossain</strong>
+                    <p>Sylhet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="reservation">
+    <div class="form-space">
+        <h3>Book a Professional Guide</h3>
+        <p>Booking request <b class="number">01300318906</b><br>or fill out the booking form</p>
+        <br><br>
+        <form id="guideBookingForm" action="/book-guide" method="post">
+            <div class="form">
+                <div class="q">
+                    <input class="input-x" type="text" name="name" placeholder="Your Name" required value="{{ session.user_name | default('', true) }}">
+                    <input class="input-x" type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9]{11}">
+                </div>
+                <div class="p">
+                    <div class="input-group">
+                        <input type="number" name="persons" placeholder="How many persons?" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="date" name="date" placeholder="Select Date" required>
+                    </div>
+                    <div class="input-group">
+                        <select name="duration" required>
+                            <option value="">Select Duration</option>
+                            <option value="1">1 Day</option>
+                            <option value="2">2 Days</option>
+                            <option value="3">3 Days</option>
+                            <option value="5">5 Days</option>
+                            <option value="7">1 Week</option>
+                        </select>
+                    </div>
+                </div>
+                <input class="input-x" type="text" name="message" placeholder="Special Requirements (Optional)">
+            </div>
+            <button class="B" type="submit"><b>Book Guide</b></button>
+        </form>
+    </div>
+    <div class="right">
+        <h3>Contact Us</h3>
+        <p>Booking Request</p>
+        <h2 class="number">01300318906</h2>
+        <p>Location<br><br>
+        <span class="smoke">Sector 14, Uttara<br>Dhaka, Bangladesh<br><br></span>
+        Working Hours<br><br>
+        <span class="smoke">Monday to Sunday<br><br>
+        9:00 AM - 10:00 PM</span><br><br>
+        Email<br><br>
+        <span class="smoke">info@travelbd.com<br>
+        support@travelbd.com<br><br></span></p>
+    </div>
+</div>
+
+<br><br><br>
+
+<!-- ==================== NEWSLETTER SECTION ==================== -->
+<div class="newsletter-section">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Get exclusive travel tips, offers, and updates directly to your inbox</p>
+    <form id="newsletterForm" class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+    </form>
+    <p class="newsletter-notice"><i class="fa-solid fa-circle-check"></i> No spam, unsubscribe anytime</p>
+</div>
+
+<br><br><br>
+<img src="">
+<div class="strength">
+    <div class="why">WHY CHOOSE US</div><br>
+    <div class="our">Our Strength</div>
+</div>
+
+<div class="icon">
+    <div class="align strength-card">
+        <div class="strength-icon"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="h1">Expert Guides</div>
+        <p>Professional and experienced<br>
+        tour guides for your journey.</p>
+    </div>
+    <div class="align strength-card">
+        <div class="strength-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+        <div class="h1">Best Locations</div>
+        <p>Carefully curated destinations<br>
+        for unforgettable experiences.</p>
+    </div>
+    <div class="align strength-card">
+        <div class="strength-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="h1">Safety First</div>
+        <p>Your safety is our<br>
+        top priority always.</p>
+    </div>
+    <div class="align strength-card">
+        <div class="strength-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="h1">24/7 Support</div>
+        <p>Round the clock customer<br>
+        support for your convenience.</p>
+    </div>
+</div>
+
+<br><br><br><br><br>
+<img src="">
+<br><br><br><br><br>
+
+{% endblock %}

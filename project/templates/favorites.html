@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}My Favorites - TravelBangladesh{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>My Favorites</h1>
+    <p>Destinations you want to visit</p>
+</div>
+
+<div class="favorites-container">
+    {% if favorites %}
+    <div class="places-grid" style="padding: 20px 60px;">
+        {% for dest in favorites %}
+        <div class="place-card">
+            <img src="/static/image/{{ dest.image }}" alt="{{ dest.name }}">
+            <div class="place-info">
+                <h3>{{ dest.name }}</h3>
+                <p class="dest-district">{{ dest.district }}</p>
+                <p>{{ dest.description }}</p>
+                <p class="place-price">Entry Fee: {{ dest.price }} BDT</p>
+                <div class="fav-card-actions">
+                    <button class="book-place-btn" onclick="bookPlace('{{ dest.name }}', {{ dest.price }})">Book Now</button>
+                    <button class="remove-fav-btn" onclick="toggleFavorite({{ dest.id }}, this)" title="Remove from favorites"><i class="fa-solid fa-heart-circle-minus"></i> Remove</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-bookings">No favorites yet. <a href="/destinations">Browse destinations</a> and use the favorite button to save places.</p>
+    {% endif %}
+</div>
+{% endblock %}

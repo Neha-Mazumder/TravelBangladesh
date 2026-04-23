@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block title %}Book Ticket - TravelBangladesh{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Book Your Ticket</h1>
+    <p>Plan your perfect journey with us</p>
+</div>
+
+<div class="booking-page-content">
+    <div class="dish">
+        <img src="/static/image/20d35a0ed3ce4857bbe3e25481eaab7e-279440114-294016256252968-1092004695835315850-n.jpeg" height="900vh" width="650px">
+        <div class="ds">
+            <img src="">
+            <h3 id="sc">Tanguar Haor</h3>
+            <h1 id="lob">Largest <br>Wetland</h1>
+            <p id="pera">Tanguar Haor is one of the largest <br>natural water reservoirs in South Asia<br>
+                Because of its diverse natural <br> and aquatic features, it has been declared<br>as a Ramsar site by IUCN.<br>
+                Every winter the haor is home <br>to about 200 types of migratory birds.<br>
+                It has become more popular as a <br>tourist attraction <br>
+                due to the number of houseboats<br> Experience houseboat life with us<br></p>
+            <h4 id="price">Houseboat Ticket price</h4>
+            <h3 id="new">6,000 BDT</h3>
+            <button id="seemanu"><b>Book Now</b></button>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="booking-options">
+        <h2 class="section-title">Popular Tour Packages</h2>
+        <div class="package-grid">
+            <div class="package-card">
+                <h3>Cox's Bazar Beach Tour</h3>
+                <p class="package-price">5,000 BDT per person</p>
+                <ul class="package-features">
+                    <li>3 Days / 2 Nights</li>
+                    <li>Hotel Accommodation</li>
+                    <li>Breakfast Included</li>
+                    <li>Local Guide</li>
+                </ul>
+                <button class="package-btn" onclick="bookPlace('Cox\'s Bazar Beach Tour', 5000)">Book Now</button>
+            </div>
+            <div class="package-card">
+                <h3>Sundarbans Adventure</h3>
+                <p class="package-price">8,000 BDT per person</p>
+                <ul class="package-features">
+                    <li>4 Days / 3 Nights</li>
+                    <li>Boat Accommodation</li>
+                    <li>All Meals Included</li>
+                    <li>Expert Guide</li>
+                </ul>
+                <button class="package-btn" onclick="bookPlace('Sundarbans Adventure', 8000)">Book Now</button>
+            </div>
+            <div class="package-card">
+                <h3>Sylhet Tea Gardens</h3>
+                <p class="package-price">4,500 BDT per person</p>
+                <ul class="package-features">
+                    <li>2 Days / 1 Night</li>
+                    <li>Resort Stay</li>
+                    <li>Meals Included</li>
+                    <li>Tea Tasting Experience</li>
+                </ul>
+                <button class="package-btn" onclick="bookPlace('Sylhet Tea Gardens', 4500)">Book Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
