@@ -77,6 +77,12 @@ def serve_logo(filename):
     return send_from_directory(LOGO_DIR, filename)
 
 
+@app.route("/favicon.ico")
+def favicon():
+    """Serve favicon for browser tab icon."""
+    return send_from_directory(LOGO_DIR, "travelbd.png")
+
+
 @app.after_request
 def after_request(response):
     """Make sure responses arent cached so we always get fresh data."""
